@@ -10,7 +10,8 @@ secrets = process.env.SECRET
 app = express()
 
 app.get '/', (req, res) ->
-    res.status(200).send('this is the home page')
+    res.set('Content-Type','text/html')
+    .sendFile('index.html',root:'.')
 
 app.use '/shopify-proxy', (req, res, next) ->
     console.log('Verifying signature...')
