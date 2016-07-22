@@ -2,7 +2,7 @@
   "name": "shopify-app-proxy-demo",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "start.js",
   "dependencies": {
     "coffee": "^3.2.1",
     "express": "^4.13.4",
