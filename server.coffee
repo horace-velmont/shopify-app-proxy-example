@@ -40,4 +40,4 @@ app.get '/shopify-proxy', (req, res) ->
     .sendFile("proxy.liquid", root: '.')
     
 
-require('http').createServer(app).listen(process.env.PORT)
+require('http').createServer(app).listen(process.env.PORT.process.env.IP)
