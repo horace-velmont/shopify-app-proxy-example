@@ -5,7 +5,7 @@ crypto = require 'crypto'
 fs = require 'fs'
 querystring = require 'querystring'
 
-secrets = JSON.parse(fs.readFileSync('../secrets.json', 'utf-8'))
+secrets = process.env.SECRET
 
 app = express()
 
@@ -26,7 +26,7 @@ app.use '/shopify-proxy', (req, res, next) ->
             "#{key}=#{value.join(',')}"
         .join('')
     hash =
-        crypto.createHmac('sha256', secrets.shopify_shared_secret)
+        crypto.createHmac('sha256', secrets)
         .update(input)
         .digest('hex')
     if signature != hash
