@@ -12,6 +12,9 @@ app = express()
 app.get '/', (req, res) ->
     res.set('Content-Type','text/html')
     .sendFile('index.html',root:'.')
+    
+app.get '/shopify/:callback' (req,res) -> 
+    res.status(200).send('All is well with callback ')
 
 app.use '/shopify-proxy', (req, res, next) ->
     console.log('Verifying signature...')
