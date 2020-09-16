@@ -5,7 +5,7 @@ crypto = require 'crypto'
 fs = require 'fs'
 querystring = require 'querystring'
 
-secrets = process.env.SECRET
+secrets = "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"
 
 app = express()
 
