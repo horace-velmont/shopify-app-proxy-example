@@ -48,8 +48,6 @@ app.use '/shopify-proxy', (req, res, next) ->
 
 app.get '/shopify-proxy', (req, res) ->
     res.set('Content-Type', 'application/liquid')
-    .status(200).send("{{customer}}")
-    //    .sendFile("proxy.liquid", root: '.')
-    
+    .status(200).send("{{customer.email}}")
 
 require('http').createServer(app).listen(process.env.PORT || 8080,process.env.IP || '0.0.0.0')
