@@ -1,22 +1,5 @@
-
-<pre>
-This is the proxy page for {{ shop.name }}.
-{{ shop.name }} has {{ shop.products_count }} {{ shop.products_count | pluralize: 'product', 'products' }}.
-List of products in the store:
-{% for product in collections['all'].products %} - {{ product.title }}<br>{% endfor %}
-
-Hello, customer. your email is {{customer.email}}.
-</pre>
-<div id="email">
-{{customer.email}}
-</div>
-<div>
-cart : {{cart}}
-cart_id : {{cart.id}}
-cart items : {{cart.items}}
-</div>
-
 <script id="channel-io-widget">
 window.shopifyConfig = {};
 window.shopifyConfig.email = {{customer.email}}
+window.shopifyConfig.name = {{customer.name}}
 </script>
