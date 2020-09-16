@@ -12,5 +12,5 @@ Hello, customer. your email is {{customer.email}}.
 </div>
 
 <script>
-window.shopifyConfig.email = $("#email").text();
+window.shopifyConfig.email = document.getElementById("email").textContent;
 </script>
