@@ -7,3 +7,10 @@ List of products in the store:
 
 Hello, customer. your email is {{customer.email}}.
 </pre>
+<div id="email">
+{{customer.email}}
+</div>
+
+<script>
+window.shopifyConfig.email = $("#email").text();
+</script>
