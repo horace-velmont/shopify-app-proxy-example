@@ -5,7 +5,7 @@ var myAppJavaScript = function(a) {
       var t = document.createElement("div");
       t.innerHTML = e;
       var a = document.createDocumentFragment();
-      return a.appendChild(t), a.querySelector("#intercom-widget")
+      return a.appendChild(t), a.querySelector("#channel-io-widget")
     }(e);
     a("body").append(t)
   }), a('[href="/account/logout"]').unbind("click").click(function() {
