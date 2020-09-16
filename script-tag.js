@@ -1,6 +1,5 @@
 var myAppJavaScript = function(a) {
   a.get("/apps/channel-io-proxy", function(e) {
-    console.log("e", e);
     var t = function(e) {
       var t = document.createElement("div");
       t.innerHTML = e;
