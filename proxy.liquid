@@ -1,7 +1,9 @@
 {% layout none %}
 <script id="channel-io-widget">
-window.shopifyConfig = {};
-window.shopifyConfig.email = {{customer.email}};
-window.shopifyConfig.name = {{customer.name}};
-window.shopifyConfig.phone = {{customer.phone}};
+window.channelConfig = {};
+window.channelConfig.email = '{{customer.email}}';
+window.channelConfig.name = '{{customer.name}}';
+window.channelConfig.phone = '{{customer.phone}}';
+window.channelConfig.id = '{{customer.id}}';
+window.channelConfig.address = '{{customer.address}}';
 </script>
