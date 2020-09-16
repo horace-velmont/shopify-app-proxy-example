@@ -18,7 +18,7 @@ app.get '/shopify/:callback', (req,res) ->
     res.status(200).send('All is well with callback ')
     
 app.get '/script-tag', (req, res) ->
-    res.status(200).sendFile("script-tag.js")
+    res.status(200).sendFile("script-tag.js",root:'.')
 
 app.use '/shopify-proxy', (req, res, next) ->
     console.log('Verifying signature...')
