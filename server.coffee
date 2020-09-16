@@ -17,10 +17,10 @@ app.get '/', (req, res) ->
 app.get '/shopify/:callback', (req,res) -> 
     res.status(200).send('All is well with callback ')
     
-app.use '/scriptTag', (req, res, next) ->
+app.use '/scriptTag', (req, res) ->
     resp = ""
-    request.get {uri:'https://channel-io.myshopify.com/apps/channel-io-proxy'}, (err, r, body) ->
-    resp = body
+    request.get {uri:'https://channel-io-test.myshopify.com/apps/channel-io-proxy'}, (err, r, body) -> 
+        resp = body
     res.status(200).send("BODY: " + resp)
 
 app.use '/shopify-proxy', (req, res, next) ->
