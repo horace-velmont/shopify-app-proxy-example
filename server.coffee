@@ -1,5 +1,6 @@
 process = require 'process'
 express = require 'express'
+request = require 'request'
 {inspect} = require 'util'
 crypto = require 'crypto'
 fs = require 'fs'
@@ -15,6 +16,12 @@ app.get '/', (req, res) ->
     
 app.get '/shopify/:callback', (req,res) -> 
     res.status(200).send('All is well with callback ')
+    
+app.use '/scriptTag', (req, res, next) ->
+    resp = ""
+    request.get {uri:'https://api.service.co/search?query=paris', json : true}, (err, r, body) ->
+    resp = body
+    console.log "BODY: " + resp
 
 app.use '/shopify-proxy', (req, res, next) ->
     console.log('Verifying signature...')
