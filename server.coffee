@@ -48,7 +48,7 @@ app.use '/shopify-proxy', (req, res, next) ->
 
 app.get '/shopify-proxy', (req, res) ->
     res.set('Content-Type', 'application/liquid')
-    res.status(200).send("{{customer}}")
+    .status(200).send("{{customer}}")
     //    .sendFile("proxy.liquid", root: '.')
     
 
