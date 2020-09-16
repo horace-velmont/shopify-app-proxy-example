@@ -18,7 +18,10 @@ app.get '/shopify/:callback', (req,res) ->
     res.status(200).send('All is well with callback ')
     
 app.get '/scriptTag', (req, res) ->
-    res.status(200).send("BODY: " + 123)
+    resp = ""
+    request.get {uri:'https://channel-io-test.myshopify.com/apps/channel-io-proxy'}, (err, r, body) -> 
+        resp = body
+    res.status(200).send("BODY: " + resp)
 
 app.use '/shopify-proxy', (req, res, next) ->
     console.log('Verifying signature...')
