@@ -1,12 +1,13 @@
 var myAppJavaScript = function(a) {
   a.get("/apps/channel-io-proxy", function(e) {
+    console.log("e", e);
     var t = function(e) {
       var t = document.createElement("div");
       t.innerHTML = e;
       var a = document.createDocumentFragment();
       return a.appendChild(t), a.querySelector("#intercom-widget")
     }(e);
-    a("body").append(t), setInterval(storeCartCookies, 2e3)
+    a("body").append(t)
   }), a('[href="/account/logout"]').unbind("click").click(function() {
     Intercom("shutdown")
   })
