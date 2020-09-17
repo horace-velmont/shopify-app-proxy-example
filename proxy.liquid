@@ -13,7 +13,7 @@ window.channelConfig.addresses = [];
   window.channelConfig.addresses.push(addressObj);
 {% endfor %}
 window.channelConfig.cart = {};
-window.channelConfig.cart.items = {};
+window.channelConfig.cart.items = [];
 {% for item in cart.items %}
   var itemObj = {};
   itemObj.title = '{{ item.title }}';
