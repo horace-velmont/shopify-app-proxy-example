@@ -12,7 +12,9 @@ window.channelConfig.addresses = [];
   addressObj.street = '{{ address.street }}';
   window.channelConfig.addresses.push(addressObj);
 {% endfor %}
-window.channelConfig.cart = {};
+window.channelConfig.cart = {
+  total_price : {{cart.total_price}}
+};
 window.channelConfig.cart.items = [];
 {% for item in cart.items %}
   var itemObj = {};
