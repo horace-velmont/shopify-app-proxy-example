@@ -22,6 +22,15 @@ window.channelConfig.cart.items = [];
   window.channelConfig.cart.items.push(itemObj);
 {% endfor %}
 
+window.channelConfig.orders = [];
+{% for order in customer.orders %}
+  var orderObj = {};
+  orderObj.name = '{{ order.name }}';
+  orderObj.total_price = '{{ order.total_price }}';
+  orderObj.fulfillment_status_label = '{{ order.fulfillment_status_label }}';
+  window.channelConfig.orders.push(orderObj);
+{% endfor %}
+
 window.channelConfig.customer.orders_count = '{{customer.orders_count}}';
 window.channelConfig.customer.total_spent = '{{customer.total_spent}}';
 window.channelConfig.address = {
