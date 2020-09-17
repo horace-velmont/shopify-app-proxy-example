@@ -17,7 +17,7 @@ window.channelConfig.cart.items = [];
 {% for item in cart.items %}
   var itemObj = {};
   itemObj.title = '{{ item.title }}';
-  window.channelConfig.items.push(itemObj);
+  window.channelConfig.cart.items.push(itemObj);
 {% endfor %}
 
 window.channelConfig.customer.orders_count = '{{customer.orders_count}}';
