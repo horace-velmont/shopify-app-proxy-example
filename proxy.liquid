@@ -1,17 +1,20 @@
 {% layout none %}
 <script id="channel-io-widget">
 window.channelConfig = {};
-window.channelConfig.email = '{{customer.email}}';
-window.channelConfig.name = '{{customer.name}}';
-window.channelConfig.phone = '{{customer.phone}}';
-window.channelConfig.id = '{{customer.id}}';
-window.channelConfig.address = '{{customer.address}}';
-window.channelConfig.orders_count = '{{customer.orders_count}}'
-window.channelConfig.total_spent = '{{customer.total_spent}}'
+window.channelConfig.customer.email = '{{customer.email}}';
+window.channelConfig.customer.name = '{{customer.name}}';
+window.channelConfig.customer.phone = '{{customer.phone}}';
+window.channelConfig.customer.id = '{{customer.id}}';
+window.channelConfig.customer.address = '{{customer.address}}';
+window.channelConfig.customer.orders_count = '{{customer.orders_count}}'
+window.channelConfig.customer.total_spent = '{{customer.total_spent}}'
 window.channelConfig.address = {};
 window.channelConfig.address.address1 = '{{address.address1}}'
 window.channelConfig.address.address2 = '{{address.address2}}'
 window.channelConfig.address.shipping_address = '{{address.shipping_address}}'
 window.channelConfig.address.billing_address = '{{address.billing_address}}'
 window.channelConfig.address.name = '{{address.name}}'
+window.channelConfig.customer_address = {};
+window.channelConfig.customer_address.address1 = '{{customer_address.address1}}';
+window.channelConfig.customer_address.address2 = '{{customer_address.address2}}';
 </script>
