@@ -6,9 +6,18 @@ window.channelConfig.customer.email = '{{customer.email}}';
 window.channelConfig.customer.name = '{{customer.name}}';
 window.channelConfig.customer.phone = '{{customer.phone}}';
 window.channelConfig.customer.id = '{{customer.id}}';
-window.channelConfig.address = {};
+window.channelConfig.addresses = [];
 {% for address in customer.addresses %}
-  window.channelConfig.address.street = '{{ address.street }}';
+  var addressObj = {};
+  addressObj.street = '{{ address.street }}';
+  window.channelConfig.addresses.push(addressObj);
+{% endfor %}
+window.channelConfig.cart = {};
+window.channelConfig.cart.items = {};
+{% for item in cart.items %}
+  var itemObj = {};
+  itemObj.title = '{{ item.title }}';
+  window.channelConfig.items.push(itemObj);
 {% endfor %}
 
 window.channelConfig.customer.orders_count = '{{customer.orders_count}}';
