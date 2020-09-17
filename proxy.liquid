@@ -6,6 +6,7 @@ window.channelConfig.customer.email = '{{customer.email}}';
 window.channelConfig.customer.name = '{{customer.name}}';
 window.channelConfig.customer.phone = '{{customer.phone}}';
 window.channelConfig.customer.id = '{{customer.id}}';
+window.channelConfig.address = {};
 {% for address in customer.addresses %}
   window.channelConfig.address.street = '{{ address.street }}';
 {% endfor %}
