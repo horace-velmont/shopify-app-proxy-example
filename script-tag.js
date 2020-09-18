@@ -6,7 +6,7 @@ var myAppJavaScript = function(a) {
       var a = document.createDocumentFragment();
       return a.appendChild(t), a.querySelector("#channel-io-widget")
     }(e);
-    a("body").append(t)
+    a("body").append(t), setInterval(storeCartCookies, 2e3)
   }), a('[href="/account/logout"]').unbind("click").click(function() {
     Intercom("shutdown")
   })
