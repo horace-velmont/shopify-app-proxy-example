@@ -28,7 +28,7 @@ var loadScript = function(e, t) {
 function storeCartCookies() {
   var e = {
     cart_id: docCookies.getItem("cart")
-  },
+  };
   
   if (window.channelConfig.customer.id) {
     console.log("has customer id");
