@@ -39,6 +39,7 @@ function storeCartCookies() {
     if (e.customer_id != last_user_id || e.cart_id != last_user_cart) {
       docCookies.setItem("last_user_id", e.customer_id);
       docCookies.setItem("last_user_cart", e.cart_id);
+      // $.get('/channel-io-proxy/cart')
       $.get("https://d3c090ccee4e6c1ae6f772b732790f92.m.pipedream.net", e)
     }
   }
