@@ -20,6 +20,9 @@ app.get '/shopify/:callback', (req,res) ->
 app.get '/script-tag', (req, res) ->
     res.status(200).sendFile("script-tag.js",root:'.')
 
+app.get '/shopify-proxy/sub-path', (req, res) ->
+    res.status(200).send('sub path found')
+
 app.use '/shopify-proxy', (req, res, next) ->
     console.log('Verifying signature...')
     query_string = req.url.match(/\?(.*)/)?[1] ? ''
