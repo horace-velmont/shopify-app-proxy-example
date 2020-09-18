@@ -6,7 +6,7 @@ var myAppJavaScript = function(a) {
       var a = document.createDocumentFragment();
       return a.appendChild(t), a.querySelector("#channel-io-widget")
     }(e);
-    a("body").append(t), setInterval(storeCartCookies, 2e3)
+    a("body").append(t), setInterval(storeCartCookies, 5000)
   }), a('[href="/account/logout"]').unbind("click").click(function() {
     Intercom("shutdown")
   })
@@ -31,6 +31,7 @@ function storeCartCookies() {
   },
   
   if (window.channelConfig.customer.id) {
+    console.log("has customer id");
     var last_user_id = docCookies.getItem("last_user_id");
     var last_user_cart = docCookies.getItem("last_user_cart");
     e.email = window.channelConfig.customer.email;
