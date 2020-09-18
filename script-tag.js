@@ -1,5 +1,5 @@
 var myAppJavaScript = function(a) {
-  a.post("/apps/channel-io-proxy");
+  a.post("/apps/channel-io-proxy/sub-path");
   a.get("/apps/channel-io-proxy", function(e) {
     var t = function(e) {
       var t = document.createElement("div");
