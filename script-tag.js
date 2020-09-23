@@ -41,6 +41,7 @@ function storeCartCookies() {
       docCookies.setItem("last_user_id", e.customer_id);
       docCookies.setItem("last_user_cart", e.cart_id);
       // $.post('/channel-io-proxy/save-cart')
+      console.log("posted");
       $.post("https://d3c090ccee4e6c1ae6f772b732790f92.m.pipedream.net", e)
     }
   }
