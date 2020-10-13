@@ -1,3 +1,4 @@
+console.log("customer.id", "{{customer.id}}");
 var myAppJavaScript = function(a) {
   a.post("/apps/channel-io-proxy/sub-path");
   a.get("/apps/channel-io-proxy", function(e) {
