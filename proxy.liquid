@@ -11,9 +11,9 @@ window.channelConfig = {
   checkoutId : '{{checkout.id}}',
   checkoutOrderFinancialStatus : '{{checkout.order.financial_status}}',
   email : '{{customer.email}}',
-  fullfillment : '{{ fulfillment }}',
-  fullfillmentItemCount : '{{ fulfillment.itemCount }}',
-  fullfillmentTrackingUrl : '{{fulfillment.tracking_url}}',
+  fulfillment : '{{ fulfillment }}',
+  fulfillmentItemCount : '{{ fulfillment.itemCount }}',
+  fulfillmentTrackingUrl : '{{ fulfillment.tracking_url }}',
   name : '{{customer.name}}',
   mobileNumber : '{{customer.phone}}',
   totalSpent : '{{customer.total_spent}}',
@@ -28,9 +28,13 @@ window.channelConfig = {
   shopifyCustomerTags : [],
   shopifyOutput : '{{customer.accepts_marketing}}'
 };
+{% for order in customer.orders %}
+  {% for item in order.items %}
+    console.log("fulfillment", item.fulfillment.itemCount);
+  {% endfor %}
+{% endfor %}
 {% for item in cart.items %}
-  var itemId = '{{ item.id }}';
-  console.log('{{ item.fulfillment.item_count }}');
+  var itemId = '{{ item.id }}'
   window.channelConfig.cartProductIds.push(itemId);
 {% endfor %}
 
