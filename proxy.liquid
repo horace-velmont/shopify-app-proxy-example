@@ -1,43 +1,26 @@
 {% layout none %}
 <script id="channel-io-widget">
-window.channelConfig = {};
-window.channelConfig.customer = {};
-window.channelConfig.customer.email = '{{customer.email}}';
-window.channelConfig.customer.name = '{{customer.name}}';
-window.channelConfig.customer.phone = '{{customer.phone}}';
-window.channelConfig.customer.id = '{{customer.id}}';
-window.channelConfig.addresses = [];
-{% for address in customer.addresses %}
-  var addressObj = {};
-  addressObj.street = '{{ address.street }}';
-  window.channelConfig.addresses.push(addressObj);
-{% endfor %}
-window.channelConfig.cart = {
-  total_price : {{cart.total_price}}
-};
-window.channelConfig.cart.items = [];
-{% for item in cart.items %}
-  var itemObj = {};
-  itemObj.title = '{{ item.title }}';
-  window.channelConfig.cart.items.push(itemObj);
-{% endfor %}
-
-window.channelConfig.orders = [];
-{% for order in customer.orders %}
-  var orderObj = {};
-  orderObj.name = '{{ order.name }}';
-  orderObj.total_price = '{{ order.total_price }}';
-  orderObj.fulfillment_status_label = '{{ order.fulfillment_status_label }}';
-  window.channelConfig.orders.push(orderObj);
-{% endfor %}
-
-window.channelConfig.customer.orders_count = '{{customer.orders_count}}';
-window.channelConfig.customer.total_spent = '{{customer.total_spent}}';
-window.channelConfig.address = {
-  address1 : '{{address.address1}}',
-  address2 : '{{address.address2}}',
-  shipping_address : '{{address.shipping_address}}',
-  billing_address : '{{address.billing_address}}',
-  name : '{{address.name}}'
+window.channelConfig = {
+  id : '{{customer.id}}',
+  name : '{{customer.name}}',
+  email : '{{customer.email}}',
+  mobileNumber : '{{customer.phone}}',
+  defaultAddressProvince : '{{customer.default_adress.province}}',
+  totalSpent : '{{customer.total_spent}}',
+  money : '{{money}}',
+  ordersCount : '{{customer.orders_count}}',
+  lastOrderTotalPrice : '{{customer.last_order.total_price | money | default: 0}}', 
+  lastOrderNumber : '{{customer.last_order.order_number}}',
+  lastOrderShippingPrice : '{{customer.last_order.shipping_price | money | default: 0}}',
+  lastOrderCreatedAt : '{{customer.last_order.created_at}}',
+  lastOrderCancelReason : '{{customer.last_order.cancel_reason}}',
+  fullfillmentTrackingUrl : '{{fullfillment.tracking_url}}',
+  shopifyCustomerTags : '{{customer.tags}}',
+  shopifyOutput : '{{customer.accepts_marketing}}',
+  cartTotalPrice : '{{cart.total_price | money | default: 0}}',
+  cartItemCount : '{{cart.item_count}}',
+  cartProductIds : '{{cart.line_times}}',
+  checkoutOrderFinancialStatus : '{{checkout.order.financial_status}}',
+  sellingPlan : '{{selling_plan}}'
 };
 </script>
