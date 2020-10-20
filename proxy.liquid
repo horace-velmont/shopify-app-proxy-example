@@ -30,7 +30,7 @@ window.channelConfig = {
   shopifyOutput : '{{customer.accepts_marketing}}'
 };
 {% for item in customer.last_order.line_items %}
-  var itemCount = {{ item.fulfillment.item_count }};
+  var itemCount = '{{ item.fulfillment.item_count }}';
   window.channelConfig.fuls.push(itemCount);
 {% endfor %}
 {% for item in cart.items %}
