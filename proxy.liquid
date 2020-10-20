@@ -28,8 +28,8 @@ window.channelConfig = {
   shopifyOutput : '{{customer.accepts_marketing}}'
 };
 {% for item in cart.items %}
-  const cartItemId = '{{ item.id }}';
-  window.channelConfig.cartProductIds.push(cartItemId);
+  const shopifyCartItemId = '{{ item.id }}';
+  window.channelConfig.cartProductIds.push(shopifyCartItemId);
 {% endfor %}
 
 {% for tag in customer.tags %}
