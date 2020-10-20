@@ -9,7 +9,7 @@ window.channelConfig = {
   cartProductIds : [],
   checkout : '{{checkout}}',
   checkoutId : '{{checkout.id}}',
-  checkoutOrderFinancialStatus : '{{checkout.order.financial_status}}',
+  checkoutOrderFinancialStatus : '{{customer.last_order.financial_status}}',
   email : '{{customer.email}}',
   fulfillment : '{{ fulfillment }}',
   fulfillmentItemCount : '{{ fulfillment.itemCount }}',
@@ -26,12 +26,11 @@ window.channelConfig = {
   lastOrderCancelReason : '{{customer.last_order.cancel_reason}}',
   sellingPlan : '{{selling_plan}}',
   shopifyCustomerTags : [],
+  fuls : [],
   shopifyOutput : '{{customer.accepts_marketing}}'
 };
-{% for order in customer.orders %}
-  {% for item in order.items %}
-    console.log("fulfillment", item.fulfillment.itemCount);
-  {% endfor %}
+{% for item in customer.last_order.line_items %}
+   window.channelConfig.fuls.push(item.fulfillment.itemCount);
 {% endfor %}
 {% for item in cart.items %}
   var itemId = '{{ item.id }}'
