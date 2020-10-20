@@ -10,7 +10,8 @@ window.channelConfig = {
   checkout : '{{checkout}}',
   checkoutOrderFinancialStatus : '{{checkout.order.financial_status}}',
   email : '{{customer.email}}',
-  fullfillment : '{{fullfillment}}',
+  fullfillment : '{{ fullfillment }}',
+  fullfillmentItemCount : '{{ fullfillment.itemCount }}',
   fullfillmentTrackingUrl : '{{fullfillment.tracking_url}}',
   name : '{{customer.name}}',
   mobileNumber : '{{customer.phone}}',
@@ -22,11 +23,17 @@ window.channelConfig = {
   lastOrderShippingPrice : '{{customer.last_order.shipping_price | money | default: 0}}',
   lastOrderCreatedAt : '{{customer.last_order.created_at}}',
   lastOrderCancelReason : '{{customer.last_order.cancel_reason}}',
-  shopifyCustomerTags : '{{customer.tags}}',
-  shopifyOutput : '{{customer.accepts_marketing}}',
-  sellingPlan : '{{selling_plan}}'
+  sellingPlan : '{{selling_plan}}',
+  shopifyCustomerTags : [],
+  shopifyOutput : '{{customer.accepts_marketing}}'
 };
 {% for item in cart.items %}
-  window.channelConfig.cartProductIds.push(item.id);
+  const itemId = '{{ item.id }}';
+  window.channelConfig.cartProductIds.push(itemId);
+{% endfor %}
+
+{% for tag in customer.tags %}
+  const tag = '{{ tag }}';
+  window.shopifyCustomerTags.push(tag);
 {% endfor %}
 </script>
