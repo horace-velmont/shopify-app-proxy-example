@@ -27,6 +27,7 @@ window.channelConfig = {
   sellingPlan : '{{selling_plan}}',
   shopifyCustomerTags : [],
   fuls : [],
+  selNames : [],
   shopifyOutput : '{{customer.accepts_marketing}}'
 };
 {% for item in customer.last_order.line_items %}
@@ -46,4 +47,10 @@ window.channelConfig = {
   var tag = '{{ tag }}';
   window.channelConfig.shopifyCustomerTags.push(tag);
 {% endfor %}
+ {% for variant in product.variants %}
+      {% for allocation in variant.selling_plan_allocations %}
+          var selName = {{ allocation.selling_plan.name }}
+          window.channelConfig.selNames.push(selName);
+      {% endfor %}
+  {% endfor %}
 </script>
