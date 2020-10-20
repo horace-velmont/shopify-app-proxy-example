@@ -2,11 +2,11 @@
 <script id="channel-io-widget">
 window.channelConfig = {
   id : '{{customer.id}}',
-  defaultAddress : '{{customer.default_address}}',
+  defaultAddress : '{{customer.default_address.address1}}',
   defaultAddressProvince : '{{customer.default_adress.province}}',
   cartTotalPrice : '{{cart.total_price | money | default: 0}}',
   cartItemCount : '{{cart.item_count}}',
-  cartProductIds : '{{cart.items}}',
+  cartProductIds : [],
   checkout : '{{checkout}}',
   checkoutOrderFinancialStatus : '{{checkout.order.financial_status}}',
   email : '{{customer.email}}',
@@ -26,4 +26,7 @@ window.channelConfig = {
   shopifyOutput : '{{customer.accepts_marketing}}',
   sellingPlan : '{{selling_plan}}'
 };
+{% for item in cart.items %}
+  window.channelConfig.cartProductIds.push(item.id);
+{% endfor %}
 </script>
