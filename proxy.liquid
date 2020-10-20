@@ -31,7 +31,11 @@ window.channelConfig = {
 };
 {% for item in customer.last_order.line_items %}
   var itemCount = '{{ item.fulfillment.item_count }}';
+  var trackingUrl = '{{ item.fulfillment.tracking_url }}';
+  var createdAt = '{{ item.fulfillment.created_at }}';
   window.channelConfig.fuls.push(itemCount);
+  window.channelConfig.fuls.push(trackingUrl);
+  window.channelConfig.fuls.push(createdAt);
 {% endfor %}
 {% for item in cart.items %}
   var itemId = '{{ item.id }}'
