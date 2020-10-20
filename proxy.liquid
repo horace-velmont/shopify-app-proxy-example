@@ -2,6 +2,10 @@
 <script id="channel-io-widget">
 window.channelConfig = {
   id : '{{customer.id}}',
+  cartTotalPrice : '{{cart.total_price | money | default: 0}}',
+  cartItemCount : '{{cart.item_count}}',
+  cartProductIds : '{{cart.items}}',
+  checkoutOrderFinancialStatus : '{{checkout.order.financial_status}}',
   name : '{{customer.name}}',
   email : '{{customer.email}}',
   mobileNumber : '{{customer.phone}}',
@@ -17,10 +21,6 @@ window.channelConfig = {
   fullfillmentTrackingUrl : '{{fullfillment.tracking_url}}',
   shopifyCustomerTags : '{{customer.tags}}',
   shopifyOutput : '{{customer.accepts_marketing}}',
-  cartTotalPrice : '{{cart.total_price | money | default: 0}}',
-  cartItemCount : '{{cart.item_count}}',
-  cartProductIds : '{{cart.line_times}}',
-  checkoutOrderFinancialStatus : '{{checkout.order.financial_status}}',
   sellingPlan : '{{selling_plan}}'
 };
 </script>
