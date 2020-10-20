@@ -34,6 +34,6 @@ window.channelConfig = {
 
 {% for tag in customer.tags %}
   var tag = '{{ tag }}';
-  window.shopifyCustomerTags.push(tag);
+  window.channelConfig.shopifyCustomerTags.push(tag);
 {% endfor %}
 </script>
