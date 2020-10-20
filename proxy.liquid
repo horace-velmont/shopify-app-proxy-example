@@ -2,14 +2,18 @@
 <script id="channel-io-widget">
 window.channelConfig = {
   id : '{{customer.id}}',
+  defaultAddress : '{{customer.default_address}}',
+  defaultAddressProvince : '{{customer.default_adress.province}}',
   cartTotalPrice : '{{cart.total_price | money | default: 0}}',
   cartItemCount : '{{cart.item_count}}',
   cartProductIds : '{{cart.items}}',
+  checkout : '{{checkout}}',
   checkoutOrderFinancialStatus : '{{checkout.order.financial_status}}',
-  name : '{{customer.name}}',
   email : '{{customer.email}}',
+  fullfillment : '{{fullfillment}}',
+  fullfillmentTrackingUrl : '{{fullfillment.tracking_url}}',
+  name : '{{customer.name}}',
   mobileNumber : '{{customer.phone}}',
-  defaultAddressProvince : '{{customer.default_adress.province}}',
   totalSpent : '{{customer.total_spent}}',
   money : '{{money}}',
   ordersCount : '{{customer.orders_count}}',
@@ -18,7 +22,6 @@ window.channelConfig = {
   lastOrderShippingPrice : '{{customer.last_order.shipping_price | money | default: 0}}',
   lastOrderCreatedAt : '{{customer.last_order.created_at}}',
   lastOrderCancelReason : '{{customer.last_order.cancel_reason}}',
-  fullfillmentTrackingUrl : '{{fullfillment.tracking_url}}',
   shopifyCustomerTags : '{{customer.tags}}',
   shopifyOutput : '{{customer.accepts_marketing}}',
   sellingPlan : '{{selling_plan}}'
