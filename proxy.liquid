@@ -30,6 +30,7 @@ window.channelConfig = {
 };
 {% for item in cart.items %}
   var itemId = '{{ item.id }}';
+  console.log('{{ item.fulfillment.item_count }}');
   window.channelConfig.cartProductIds.push(itemId);
 {% endfor %}
 
