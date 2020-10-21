@@ -3,6 +3,7 @@
 window.channelConfig = {
   id : '{{customer.id}}',
   defaultAddress : '{{customer.default_address.address1}}' + '{{customer.default_address.address2}}',
+  defaultAddressCountry : '{{customer.default_address.country}}',
   defaultAddressProvince : '{{customer.default_address.province}}',
   cartTotalPrice : '{{cart.total_price | money | default: 0}}',
   cartItemCount : '{{cart.item_count}}',
@@ -14,14 +15,18 @@ window.channelConfig = {
   lastOrderTotalPrice : '{{customer.last_order.total_price | money | default: 0}}', 
   lastOrderNumber : '{{customer.last_order.order_number}}',
   lastOrderShippingPrice : '{{customer.last_order.shipping_price | money | default: 0}}',
-  mobileNumber : '{{customer.phone}}',
+  mobileNumber : '',
   name : '{{customer.name}}',
   ordersCount : '{{customer.orders_count}}',
   shopifyCustomerTags : [],
   totalSpent : '{{customer.total_spent | money | default: 0}}',
   shopifyOutput : '{{customer.accepts_marketing}}'
 };
-
+{% if customer.phone %}
+  window.channelConfig.mobileNumber = '{{customer.phone}}';
+{% else %}
+  window.channelConfig.mobileNumber = '{{customer.default_address.phone}}';
+{% endif %}
 {% for item in cart.items %}
   var itemId = '{{ item.id }}'
   window.channelConfig.cartProductIds.push(itemId);
