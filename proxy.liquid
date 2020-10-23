@@ -33,9 +33,11 @@ window.channelConfig = {
   window.channelConfig.cartProductIds.push(itemId);
 {% endfor %}
 
-{% for item in customer.orders.line_items %}
-  var itemId = '{{ item.id }}'
-  window.channelConfig.orderProductIds.add(itemId);
+{% for order in customer.orders %}
+  {% for item in orders.line_items %}
+    var itemId = '{{ item.id }}'
+    window.channelConfig.orderProductIds.add(itemId);
+  {% endfor %}
 {% endfor %}
 
 {% for tag in customer.tags %}
