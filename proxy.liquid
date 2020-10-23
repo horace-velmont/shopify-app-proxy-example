@@ -34,7 +34,7 @@ window.channelConfig = {
 {% endfor %}
 
 {% for order in customer.orders %}
-  {% for item in orders.line_items %}
+  {% for item in order.line_items %}
     var itemId = '{{ item.id }}'
     window.channelConfig.orderProductIds.add(itemId);
   {% endfor %}
