@@ -29,13 +29,13 @@ window.channelConfig = {
   window.channelConfig.mobileNumber = '{{customer.default_address.phone}}';
 {% endif %}
 {% for item in cart.items %}
-  var itemId = '{{ item.id }}'
+  var itemId = '{{ item.product_id }}'
   window.channelConfig.cartProductIds.push(itemId);
 {% endfor %}
 
 {% for order in customer.orders %}
   {% for item in order.line_items %}
-    var itemId = '{{ item.id }}'
+    var itemId = '{{ item.product_id }}'
     window.channelConfig.orderProductIds.add(itemId);
   {% endfor %}
 {% endfor %}
