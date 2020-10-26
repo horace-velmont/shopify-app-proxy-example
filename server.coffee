@@ -27,7 +27,7 @@ app.post '/shopify-proxy/sub-path', (req, res) ->
     res.status(200).send('sub path post found')
     
 app.get '/shopify-redirect', (req, res) ->
-    res.end('<script>window.open("https://velmontcafe.cafe24.com", "_blank")<script>');
+    res.end('<script>window.open("https://velmontcafe.cafe24.com", "_blank")</script>');
 
 app.use '/shopify-proxy', (req, res, next) ->
     console.log('Verifying signature...')
