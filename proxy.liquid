@@ -5,7 +5,7 @@ window.channelConfig = {
   defaultAddress : '{{customer.default_address.address1}}' + '{{customer.default_address.address2}}',
   defaultAddressCountry : '{{customer.default_address.country}}',
   defaultAddressProvince : '{{customer.default_address.province}}',
-  cartTotalPrice : '{{cart.total_price | money | default: 0}}',
+  cartTotalPrice : '{{cart.total_price | money_without_currency | default: 0}}',
   cartItemCount : '{{cart.item_count}}',
   cartProductIds : [],
   orderedProductIds : new Set(),
@@ -14,14 +14,14 @@ window.channelConfig = {
   lastOrderCreatedAt : '{{customer.last_order.created_at}}',
   lastOrderCancelReason : '{{customer.last_order.cancel_reason}}',
   lastOrderFinancialStatus : '{{customer.last_order.financial_status}}',
-  lastOrderTotalPrice : '{{customer.last_order.total_price | money | default: 0}}', 
+  lastOrderTotalPrice : '{{customer.last_order.total_price | money_without_currency | default: 0}}', 
   lastOrderNumber : '{{customer.last_order.order_number}}',
-  lastOrderShippingPrice : '{{customer.last_order.shipping_price | money | default: 0}}',
+  lastOrderShippingPrice : '{{customer.last_order.shipping_price | money_without_currency | default: 0}}',
   mobileNumber : '',
   name : '{{customer.name}}',
   ordersCount : '{{customer.orders_count}}',
   shopifyCustomerTags : [],
-  totalSpent : '{{customer.total_spent | money | default: 0}}',
+  totalSpent : '{{customer.total_spent | money_without_currency | default: 0}}',
   shopifyOutput : '{{customer.accepts_marketing}}'
 };
 {% if customer.phone %}
