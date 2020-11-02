@@ -5,7 +5,7 @@ window.channelConfig = {
   defaultAddress : '{{customer.default_address.address1}}' + '{{customer.default_address.address2}}',
   defaultAddressCountry : '{{customer.default_address.country}}',
   defaultAddressProvince : '{{customer.default_address.province}}',
-  cartTotalPrice : '{{cart.total_price | money_without_currency | default: 0}}',
+  cartTotalPrice : '{{cart.total_price | default: 0}}',
   cartItemCount : '{{cart.item_count}}',
   cartProductIds : [],
   orderedProductIds : new Set(),
