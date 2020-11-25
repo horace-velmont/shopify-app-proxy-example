@@ -53,6 +53,7 @@ app.use '/shopify-proxy/profile', (req, res, next) ->
     null
 
 app.get '/shopify-proxy', (req, res) ->
-    res.redirect('http://feature.exp.channel.io:8080/desk/app/shopify/app-proxy/profile')
+    res.set('Content-Type', 'application/liquid')
+    .sendFile("proxy.liquid", root: '.')
 
 require('http').createServer(app).listen(process.env.PORT || 8080,process.env.IP || '0.0.0.0')
