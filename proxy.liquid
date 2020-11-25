@@ -28,6 +28,10 @@ window.profile = {
 {% else %}
   window.profile.mobileNumber = '{{customer.default_address.phone}}';
 {% endif %}
+if (window.profile.lastOrderCreatedAt)
+  window.profile.lastOrderCreatedAt = Date.parse(window.profile.lastOrderCreatedAt);
+if (window.profile.lastOrderCancelledAt)
+  window.profile.lastOrderCancelledAt = Date.parse(window.profile.lastOrderCancelledAt);
 {% for item in cart.items %}
   var itemId = '{{ item.product_id }}'
   window.profile.cartProductIds.push(itemId);
