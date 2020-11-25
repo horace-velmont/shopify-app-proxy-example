@@ -29,7 +29,7 @@ app.post '/shopify-proxy/sub-path', (req, res) ->
 app.get '/shopify-redirect', (req, res) ->
     res.end('<script>window.open("https://velmontcafe.cafe24.com", "_blank")</script>');
 
-app.use '/shopify-proxy', (req, res, next) ->
+app.use '/shopify-proxy/profile', (req, res, next) ->
     console.log('Verifying signature...')
     query_string = req.url.match(/\?(.*)/)?[1] ? ''
     query = querystring.parse(query_string)
