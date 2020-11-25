@@ -1,28 +1,27 @@
 {% layout none %}
 <script id="channel-io-widget">
 window.profile = {
-  id : '{{customer.id}}',
-  defaultAddress : '{{customer.default_address.address1}}' + '{{customer.default_address.address2}}',
+  memberId : '{{customer.id}}',
   defaultAddressCountry : '{{customer.default_address.country}}',
-  defaultAddressProvince : '{{customer.default_address.province}}',
-  cartTotalPrice : '{{cart.total_price | default: 0}}',
+  defaultAddressCity : '{{customer.default_address.province}}',
+  cartPrice : parseFloat('{{cart.total_price | default: 0}}')/100,
   cartItemCount : '{{cart.item_count}}',
   cartProductIds : [],
-  orderedProductIds : new Set(),
-  orderedProductVariantIds : new Set(),
+  orderedProductIds : [],
+  orderedProductVariantIds : [],
   email : '{{customer.email}}',
   lastOrderCreatedAt : '{{customer.last_order.created_at}}',
   lastOrderCancelReason : '{{customer.last_order.cancel_reason}}',
   lastOrderFinancialStatus : '{{customer.last_order.financial_status}}',
-  lastOrderTotalPrice : '{{customer.last_order.total_price | money_without_currency | default: 0}}', 
+  lastOrderPrice : parseFloat('{{customer.last_order.total_price | money_without_currency | default: 0}}')/100,
   lastOrderNumber : '{{customer.last_order.order_number}}',
-  lastOrderShippingPrice : '{{customer.last_order.shipping_price | money_without_currency | default: 0}}',
+  lastOrderShippingPrice : parseFloat('{{customer.last_order.shipping_price | money_without_currency | default: 0}}')/100,
   mobileNumber : '',
   name : '{{customer.name}}',
-  ordersCount : '{{customer.orders_count}}',
+  totalPurchaseCount : '{{customer.orders_count}}',
   shopifyCustomerTags : [],
-  totalSpent : '{{customer.total_spent | money_without_currency | default: 0}}',
-  shopifyOutput : '{{customer.accepts_marketing}}'
+  totalPurchaseAmount : parseFloat('{{customer.total_spent | money_without_currency | default: 0}}')/100,
+  // shopifyOptout : '{{customer.accepts_marketing}}'
 };
 {% if customer.phone %}
   window.profile.mobileNumber = '{{customer.phone}}';
@@ -37,8 +36,8 @@ window.profile = {
   {% for item in order.line_items %}
     var itemId = '{{ item.product_id }}'
     var variantId = '{{ item.variant_id }}'
-    window.profile.orderedProductIds.add(itemId);
-    window.profile.orderedProductVariantIds.add(variantId);
+    window.profile.orderedProductIds.push(itemId);
+    window.profile.orderedProductVariantIds.push(variantId);
   {% endfor %}
 {% endfor %}
 {% for tag in customer.tags %}
