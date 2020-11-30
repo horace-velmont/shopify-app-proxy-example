@@ -4,29 +4,29 @@ window.profile = {
   memberId : '{{customer.id}}',
   name : '{{customer.name}}',
   email : '{{customer.email}}',
-	mobileNumber : '',
+  mobileNumber : '',
   defaultAddressCity : '{{customer.default_address.province}}',
   defaultAddressCountry : '{{customer.default_address.country}}',
-  totalPurchaseAmount : (parseFloat('{{customer.total_spent | money_without_currency | default: 0}}')/100).toFixed(2),
-  totalPurchaseCount : parseInt('{{customer.orders_count | default: 0}}'),
-  lastOrderPrice : (parseFloat('{{customer.last_order.total_price | money_without_currency | default: 0}}')/100).toFixed(2),
-  lastOrderNumber : parseInt('{{customer.last_order.order_number | default: 0}}'),
-  lastOrderShippingPrice : (parseFloat('{{customer.last_order.shipping_price | money_without_currency | default: 0}}')/100).toFixed(2),
-  lastOrderCreatedAt : '{{customer.last_order.created_at}}',
-  lastOrderCancelReason : '{{customer.last_order.cancel_reason}}',
-  lastOrderCancelledAt : '{{customer.last_order.cancelled_at}}',
+  totalPurchaseAmount : {{customer.total_spent | money_without_currency | default: 0}}/100,
+  totalPurchaseCount : {{customer.orders_count | default: 0}},
+  lastOrderPrice : {{customer.last_order.total_price | money_without_currency | default: 0}}/100,
+  lastOrderNumber : {{customer.last_order.order_number | default: 0}},
+  lastOrderShippingPrice : {{customer.last_order.shipping_price | money_without_currency | default: 0}}/100,
+  lastOrderCreatedAt : {{customer.last_order.created_at}},
+  lastOrderCancelReason : {{customer.last_order.cancel_reason}},
+  lastOrderCancelledAt : {{customer.last_order.cancelled_at}},
   shopifyCustomerTags : [],
-  cartPrice : (parseFloat('{{cart.total_price | default: 0}}')/100).toFixed(2),
-  cartCount : parseInt('{{cart.item_count | default: 0}}'),
+  cartPrice : {{cart.total_price | default: 0}}/100,
+  cartCount : {{cart.item_count | default: 0}},
   cartProductIds : [],
   orderedProductIds : [],
   orderedProductVariantIds : [],
-  // shopifyOptout : '{{customer.accepts_marketing}}'
+  // shopifyOptout : {{customer.accepts_marketing}}
 };
 {% if customer.phone %}
-  window.profile.mobileNumber = '{{customer.phone}}';
+  window.profile.mobileNumber = {{customer.phone}};
 {% else %}
-  window.profile.mobileNumber = '{{customer.default_address.phone}}';
+  window.profile.mobileNumber = {{customer.default_address.phone}};
 {% endif %}
 if (window.profile.lastOrderCreatedAt)
   window.profile.lastOrderCreatedAt = Date.parse(window.profile.lastOrderCreatedAt);
@@ -34,7 +34,7 @@ if (window.profile.lastOrderCancelledAt)
   window.profile.lastOrderCancelledAt = Date.parse(window.profile.lastOrderCancelledAt);
 {% assign cartItems = cart.items | sort: 'key' | reverse %}
 {% for item in cartItems limit:51 %}
-  var itemId = '{{ item.product_id }}'
+  var itemId = {{ item.product_id }}
   console.log("cart item : ", '{{ item.key }}');
   window.profile.cartProductIds.push(itemId);
 {% endfor %}
@@ -42,13 +42,13 @@ if (window.profile.lastOrderCancelledAt)
   {% for item in order.line_items %}
     var itemId = {{ item.product_id }}
     var variantId = {{ item.variant_id }}
-    console.log("order item : ", '{{ item.key }}');
+    console.log("order item : ", {{ item.key }});
     window.profile.orderedProductIds.push(itemId);
     window.profile.orderedProductVariantIds.push(variantId);
   {% endfor %}
 {% endfor %}
 {% for tag in customer.tags limit:50 %}
-  var tag = '{{ tag }}';
+  var tag = {{ tag }};
   window.profile.shopifyCustomerTags.push(tag);
 {% endfor %}
 </script>
