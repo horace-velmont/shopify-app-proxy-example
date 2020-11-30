@@ -32,7 +32,7 @@ if (window.profile.lastOrderCreatedAt)
   window.profile.lastOrderCreatedAt = Date.parse(window.profile.lastOrderCreatedAt);
 if (window.profile.lastOrderCancelledAt)
   window.profile.lastOrderCancelledAt = Date.parse(window.profile.lastOrderCancelledAt);
-{% assign cartItems = cart.items | sort: 'key' %}
+{% assign cartItems = cart.items | sort: 'key' | reverse %}
 {% for item in cartItems limit:51 %}
   var itemId = '{{ item.product_id }}'
   console.log("cart item : ", '{{ item.key }}');
