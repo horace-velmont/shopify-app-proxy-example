@@ -9,9 +9,12 @@ window.profile = {
   defaultAddressCountry : '{{customer.default_address.country}}',
   totalPurchaseAmount : (parseFloat('{{customer.total_spent | money_without_currency | default: 0}}')/100).toFixed(2),
   totalPurchaseCount : parseInt('{{customer.orders_count | default: 0}}'),
+  lastOrderPriceOrigin : '{{customer.last_order.total_price | money_without_currency | default: 0}}'
   lastOrderPrice : (parseFloat('{{customer.last_order.total_price | money_without_currency | default: 0}}')/100).toFixed(2),
+  lastOrderNumberOrigin : '{{customer.last_order.order_number | default: 0}}'
   lastOrderNumber : parseInt('{{customer.last_order.order_number | default: 0}}'),
   lastOrderShippingPrice : (parseFloat('{{customer.last_order.shipping_price | money_without_currency | default: 0}}')/100).toFixed(2),
+  lastOrder : '{{customer.last_order}}'
   lastOrderCreatedAt : '{{customer.last_order.created_at}}',
   lastOrderCancelReason : '{{customer.last_order.cancel_reason}}',
   lastOrderCancelledAt : '{{customer.last_order.cancelled_at}}',
