@@ -40,8 +40,8 @@ if (window.profile.lastOrderCancelledAt)
 {% endfor %}
 {% for order in customer.orders %}
   {% for item in order.line_items %}
-    var itemId = '{{ item.product_id }}'
-    var variantId = '{{ item.variant_id }}'
+    var itemId = {{ item.product_id }}
+    var variantId = {{ item.variant_id }}
     console.log("order item : ", '{{ item.key }}');
     window.profile.orderedProductIds.push(itemId);
     window.profile.orderedProductVariantIds.push(variantId);
