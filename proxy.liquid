@@ -1,5 +1,18 @@
 {% layout none %}
 <script id="channel-io-widget">
+function chParseAmount(number) {
+  try {
+    if (typeof number === 'number') {
+      if (number % 100 === 0) {
+        return number / 100
+      } else {
+        return parseFloat((number / 100).toFixed(2))
+      }
+    }
+  } catch (e) {
+  }
+  return null
+}
 window.channelPluginProfile = {};
 var customerId = '{{customer.id}}';
 if (customerId) {
@@ -8,10 +21,10 @@ if (customerId) {
     name : '{{customer.name}}',
     email : '{{customer.email}}',
     mobileNumber : '',
-    totalPurchaseAmount : (parseFloat('{{customer.total_spent | money_without_currency | default: 0}}')/100).toFixed(2),
+    totalPurchaseAmount : chParseAmount(parseInt('{{customer.total_spent | money_without_currency | default: 0}}')),
     totalPurchaseCount : parseInt('{{customer.orders_count | default: 0}}'),
     shopifyCustomerTags : [],
-    cartPrice : (parseFloat('{{cart.total_price | default: 0}}')/100).toFixed(2),
+    cartPrice : chParseAmount(parseInt('{{cart.total_price | default: 0}}')),
     cartCount : parseInt('{{cart.item_count | default: 0}}')
   };
 
