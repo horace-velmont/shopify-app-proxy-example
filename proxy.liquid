@@ -15,27 +15,27 @@ window.channelPluginProfile = {
 };
 
 {% if customer.phone %}
-  window.profile.mobileNumber = '{{customer.phone}}';
+  window.channelPluginProfile.mobileNumber = '{{customer.phone}}';
 {% else %}
-  window.profile.mobileNumber = '{{customer.default_address.phone}}';
+  window.channelPluginProfile.mobileNumber = '{{customer.default_address.phone}}';
 {% endif %}
 
 {% for item in cart.items %}
   var itemId = '{{ item.product_id }}'
-  window.profile.latestCartProductIds.push(itemId);
+  window.channelPluginProfile.latestCartProductIds.push(itemId);
 {% endfor %}
 
 {% for order in customer.orders %}
   {% for item in order.line_items %}
     var itemId = '{{ item.product_id }}'
     var variantId = '{{ item.variant_id }}'
-    window.profile.latestOrderedProductIds.push(itemId);
+    window.channelPluginProfile.latestOrderedProductIds.push(itemId);
   {% endfor %}
 {% endfor %}
 
 {% for tag in customer.tags %}
   var tag = '{{ tag }}';
-  window.profile.shopifyCustomerTags.push(tag);
+  window.channelPluginProfile.shopifyCustomerTags.push(tag);
 {% endfor %}
 
 </script>
