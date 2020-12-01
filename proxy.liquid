@@ -4,14 +4,12 @@ window.channelPluginProfile = {
   memberId : '{{customer.id}}',
   name : '{{customer.name}}',
   email : '{{customer.email}}',
-	mobileNumber : '',
+  mobileNumber : '',
   totalPurchaseAmount : (parseFloat('{{customer.total_spent | money_without_currency | default: 0}}')/100).toFixed(2),
   totalPurchaseCount : parseInt('{{customer.orders_count | default: 0}}'),
   shopifyCustomerTags : [],
   cartPrice : (parseFloat('{{cart.total_price | default: 0}}')/100).toFixed(2),
-  cartCount : parseInt('{{cart.item_count | default: 0}}'),
-  latestCartProductIds : [],
-  latestOrderedProductIds : []
+  cartCount : parseInt('{{cart.item_count | default: 0}}')
 };
 
 {% if customer.phone %}
@@ -19,19 +17,6 @@ window.channelPluginProfile = {
 {% else %}
   window.channelPluginProfile.mobileNumber = '{{customer.default_address.phone}}';
 {% endif %}
-
-{% for item in cart.items %}
-  var itemId = '{{ item.product_id }}'
-  window.channelPluginProfile.latestCartProductIds.push(itemId);
-{% endfor %}
-
-{% for order in customer.orders %}
-  {% for item in order.line_items %}
-    var itemId = '{{ item.product_id }}'
-    var variantId = '{{ item.variant_id }}'
-    window.channelPluginProfile.latestOrderedProductIds.push(itemId);
-  {% endfor %}
-{% endfor %}
 
 {% for tag in customer.tags %}
   var tag = '{{ tag }}';
