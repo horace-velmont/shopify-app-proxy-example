@@ -1,6 +1,7 @@
 {% layout none %}
 <script id="channel-io-widget">
-var customerId = '{{customer.id}}'
+window.channelPluginProfile = {};
+var customerId = '{{customer.id}}';
 if (customerId) {
   window.channelPluginProfile = {
     memberId : '{{customer.id}}',
