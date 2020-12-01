@@ -1,26 +1,29 @@
 {% layout none %}
 <script id="channel-io-widget">
-window.channelPluginProfile = {
-  memberId : '{{customer.id}}',
-  name : '{{customer.name}}',
-  email : '{{customer.email}}',
-  mobileNumber : '',
-  totalPurchaseAmount : (parseFloat('{{customer.total_spent | money_without_currency | default: 0}}')/100).toFixed(2),
-  totalPurchaseCount : parseInt('{{customer.orders_count | default: 0}}'),
-  shopifyCustomerTags : [],
-  cartPrice : (parseFloat('{{cart.total_price | default: 0}}')/100).toFixed(2),
-  cartCount : parseInt('{{cart.item_count | default: 0}}')
-};
+var customerId = '{{customer.id}}'
+if (customerId) {
+  window.channelPluginProfile = {
+    memberId : '{{customer.id}}',
+    name : '{{customer.name}}',
+    email : '{{customer.email}}',
+    mobileNumber : '',
+    totalPurchaseAmount : (parseFloat('{{customer.total_spent | money_without_currency | default: 0}}')/100).toFixed(2),
+    totalPurchaseCount : parseInt('{{customer.orders_count | default: 0}}'),
+    shopifyCustomerTags : [],
+    cartPrice : (parseFloat('{{cart.total_price | default: 0}}')/100).toFixed(2),
+    cartCount : parseInt('{{cart.item_count | default: 0}}')
+  };
 
-{% if customer.phone %}
-  window.channelPluginProfile.mobileNumber = '{{customer.phone}}';
-{% else %}
-  window.channelPluginProfile.mobileNumber = '{{customer.default_address.phone}}';
-{% endif %}
+  {% if customer.phone %}
+    window.channelPluginProfile.mobileNumber = '{{customer.phone}}';
+  {% else %}
+    window.channelPluginProfile.mobileNumber = '{{customer.default_address.phone}}';
+  {% endif %}
 
-{% for tag in customer.tags %}
-  var tag = '{{ tag }}';
-  window.channelPluginProfile.shopifyCustomerTags.push(tag);
-{% endfor %}
+  {% for tag in customer.tags %}
+    var tag = '{{ tag }}';
+    window.channelPluginProfile.shopifyCustomerTags.push(tag);
+  {% endfor %}
+}
 
 </script>
