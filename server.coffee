@@ -52,7 +52,7 @@ app.use '/shopify-proxy/profile', (req, res, next) ->
         next()
     null
 
-app.get '/shopify-proxy', (req, res) ->
+app.get '/shopify-proxy/profile.liquid', (req, res) ->
     res.set('Content-Type', 'application/liquid')
     .sendFile("proxy.liquid", root: '.')
 
