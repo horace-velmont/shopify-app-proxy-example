@@ -31,7 +31,8 @@ if (customerId) {
     productTitle : '{{product.title}}',
     productCollections : '{{product.collections}}',
     productCollections2 : [],
-    collectionTitle : '{{collection.title}}'
+    collectionTitle : '{{collection.title}}',
+    productJson : '{{ product | json }}'
   };
 
   {% if customer.phone %}
