@@ -26,7 +26,11 @@ if (customerId) {
     shopifyCustomerTags : [],
     cartPrice : chParseAmount(parseInt('{{cart.total_price | default: 0}}')),
     cartCount : parseInt('{{cart.item_count | default: 0}}'),
-    product : '{{product.title}}'
+    product : '{{product}}',
+    productPrice : '{{product.price}}',
+    productTitle : '{{product.title}}',
+    productCollections : '{{product.collections}}',
+    productCollections2 : []
   };
 
   {% if customer.phone %}
@@ -38,6 +42,11 @@ if (customerId) {
   {% for tag in customer.tags %}
     var tag = '{{ tag }}';
     window.channelPluginProfile.shopifyCustomerTags.push(tag);
+  {% endfor %}
+  
+  {% for collection in product.collections %}
+    var title = '{{ collection.title }}'
+    window.channelPluginProfile.productCollections2.push(title);
   {% endfor %}
 }
 
