@@ -1,4 +1,4 @@
-<div itemscope itemtype="http://schema.org/Product" data-section-id="{{ section.id }}" data-section-type="product" data-history-state>
+<div id="custom_app" itemscope itemtype="http://schema.org/Product" data-section-id="{{ section.id }}" data-section-type="product" data-history-state>
 
 <script id="channel-io-widget">
 function chParseAmount(number) {
@@ -33,7 +33,8 @@ if (customerId) {
     productCollections : '{{product.collections}}',
     productCollections2 : [],
     collectionTitle : '{{collection.title}}',
-    productJson : '{{ product | json }}'
+    productJson : '{{ product | json }}',
+    product_id = $('#custom_app').data('product')
   };
 
   {% if customer.phone %}
