@@ -25,7 +25,8 @@ if (customerId) {
     totalPurchaseCount : parseInt('{{customer.orders_count | default: 0}}'),
     shopifyCustomerTags : [],
     cartPrice : chParseAmount(parseInt('{{cart.total_price | default: 0}}')),
-    cartCount : parseInt('{{cart.item_count | default: 0}}')
+    cartCount : parseInt('{{cart.item_count | default: 0}}'),
+    product : '{{product.title}}'
   };
 
   {% if customer.phone %}
