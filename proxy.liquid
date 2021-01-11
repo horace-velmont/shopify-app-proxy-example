@@ -1,5 +1,4 @@
-<div id="custom_app" itemscope itemtype="http://schema.org/Product" data-section-id="{{ section.id }}" data-section-type="product" data-history-state>
-
+{% layout none %}
 <script id="channel-io-widget">
 function chParseAmount(number) {
   try {
@@ -32,17 +31,13 @@ if (customerId) {
     productTitle : '{{product.title}}',
     productCollections : '{{product.collections}}',
     productCollections2 : [],
-    collectionTitle : '{{collection.title}}',
-    productJson : '{{ product | json }}',
-    product_id : $('#custom_app').data('product')
+    collectionTitle : '{{collection.title}}'
   };
-
   {% if customer.phone %}
     window.channelPluginProfile.mobileNumber = '{{customer.phone}}';
   {% else %}
     window.channelPluginProfile.mobileNumber = '{{customer.default_address.phone}}';
   {% endif %}
-
   {% for tag in customer.tags %}
     var tag = '{{ tag }}';
     window.channelPluginProfile.shopifyCustomerTags.push(tag);
@@ -53,7 +48,4 @@ if (customerId) {
     window.channelPluginProfile.productCollections2.push(title);
   {% endfor %}
 }
-
 </script>
-
-</div>
