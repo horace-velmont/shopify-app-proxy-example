@@ -53,7 +53,7 @@ app.use '/shopify-proxy/profile', (req, res, next) ->
     null
 
 app.get '/shopify-proxy/profile.liquid', (req, res) ->
-    res.set('Content-Type', 'application/liquid')
+    res.set('Access-Control-Allow-Origin', '*')
     .sendFile("proxy.liquid", root: '.')
 
 require('http').createServer(app).listen(process.env.PORT || 8080,process.env.IP || '0.0.0.0')
