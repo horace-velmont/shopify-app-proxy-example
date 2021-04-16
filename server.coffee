@@ -60,6 +60,6 @@ app.get '/shopify-proxy/profile.liquid', (req, res) ->
 app.get '/shopify-proxy/test', (req, res) ->
     res.set('Access-Control-Allow-Origin', '*')
     res.set('Content-Type', 'test/javascript')
-    .sendFile("var a = {};")
+    .send("var a = {};")
 
 require('http').createServer(app).listen(process.env.PORT || 8080,process.env.IP || '0.0.0.0')
